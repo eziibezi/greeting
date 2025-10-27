@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haven Greeting</title>
+<style>
+  body {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: transparent;
+    color: #2E2E2E;
+  }
+
+  h1 {
+    font-weight: 400;
+    font-size: 1.6rem;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+
+  .morning { color: #C2A878; }   /* gold */
+  .afternoon { color: #9CA3AF; } /* soft grey */
+  .evening { color: #5E5E5E; }   /* charcoal */
+</style>
+</head>
+<body>
+  <h1 id="greeting">Loading...</h1>
+
+<script>
+function updateGreeting() {
+  const hour = new Date().getHours();
+  const greetingEl = document.getElementById("greeting");
+  let greetingText = "";
+
+  if (hour < 12) {
+    greetingText = "☀︎ Good morning";
+    greetingEl.className = "morning";
+  } else if (hour < 18) {
+    greetingText = "☁︎ Good afternoon";
+    greetingEl.className = "afternoon";
+  } else {
+    greetingText = "☾ Good evening";
+    greetingEl.className = "evening";
+  }
+
+  greetingEl.textContent = greetingText;
+}
+
+updateGreeting();
+setInterval(updateGreeting, 60000);
+</script>
+</body>
+</html>
